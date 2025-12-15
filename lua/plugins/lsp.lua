@@ -4,6 +4,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
+    vim.lsp.set_log_level("error")
     -- custom hover
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
       vim.lsp.handlers.hover,
@@ -46,9 +47,10 @@ return {
       on_attach = lsp_keymaps,
     })
 
-    vim.lsp.config("ts_ls", {
+    vim.lsp.config("tsserver", {
       capabilities = capabilities,
       on_attach = lsp_keymaps,
+      cmd = { "typescript-language-server", "--stdio" },
     })
 
     vim.lsp.config("jdtls", {
@@ -60,7 +62,7 @@ return {
       "clangd",
       "gopls",
       "pyright",
-      "ts_ls",
+      "tsserver",
       "jdtls",
     })
 
