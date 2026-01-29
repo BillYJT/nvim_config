@@ -4,7 +4,7 @@ return {
   ---@type oil.SetupOpts
   opts = {},
   -- Optional dependencies
-  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+  dependencies = { "echasnovski/mini.icons" },
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
   config = function()
@@ -16,6 +16,9 @@ return {
         show_hidden = true,
       }
     })
+    -- Open parent directory in current window
+    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
   end,
 }
 
